@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+import requests
+import json
+
+firebase_url = 'https://us-central1-dadjokeapi.cloudfunctions.net'
+
+result = requests.get(f'{firebase_url}/getRandomJoke')
+if result.status_code == 200:
+	print(result.json()['data']['joke'])
+       

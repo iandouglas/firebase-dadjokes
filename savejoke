@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+
+import requests
+import json
+from datetime import datetime
+
+firebase_url = 'https://us-central1-dadjokeapi.cloudfunctions.net'
+
+print("tell me the joke:")
+joke = input()
+
+headers = {"Content-Type": "application/json; charset=utf-8"}
+
+data = {
+    'joke': joke,
+    'datetime': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+}
+
+result = requests.post(f'{firebase_url}/saveJoke', json=data, headers=headers)
+
+print(result)
+print(result.text)
